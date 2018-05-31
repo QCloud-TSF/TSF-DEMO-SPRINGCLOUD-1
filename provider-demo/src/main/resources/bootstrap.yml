@@ -1,0 +1,10 @@
+server:
+  port: 18081
+spring:
+  application:
+    name: provider-demo
+  profiles:
+    active: ${tsf_application_id}/${tsf_group_id}
+tsf:
+  auth:
+    enable: true

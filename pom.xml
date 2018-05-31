@@ -1,0 +1,129 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.tsf.demo</groupId>
+	<artifactId>tsf-demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+    <modules>
+        <module>provider-demo</module>
+        <module>consumer-demo</module>
+    </modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<spring-cloud-tsf-consul.version>1.3.1.TSF-RELEASE</spring-cloud-tsf-consul.version>
+		<consul-api.version>1.3.0</consul-api.version>
+		<spring-cloud-tsf-sleuth.version>1.0.0-RELEASE</spring-cloud-tsf-sleuth.version>
+		<spring-cloud-tsf-auth.version>1.0.2-RELEASE</spring-cloud-tsf-auth.version>
+	</properties>
+
+	<!--目前需通过dependencyManagement中显示指定tsf consul各sdk的版本，目前配置较繁琐 -->
+	<!--后续会通过命名规范、仓库发布、版本管理来优化这里的体验 -->
+	<!--现可通过直接复制添加demo中的dependencyManagement进行相应配置 -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>1.5.8.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Dalston.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-consul-all</artifactId>
+				<version>${spring-cloud-tsf-consul.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-consul</artifactId>
+				<version>${spring-cloud-tsf-consul.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-consul-config</artifactId>
+				<version>${spring-cloud-tsf-consul.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-consul-discovery</artifactId>
+				<version>${spring-cloud-tsf-consul.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-consul-bus</artifactId>
+				<version>${spring-cloud-tsf-consul.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-consul-core</artifactId>
+				<version>${spring-cloud-tsf-consul.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-consul-config</artifactId>
+				<version>${spring-cloud-tsf-consul.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-consul-discovery</artifactId>
+				<version>${spring-cloud-tsf-consul.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-consul-binder</artifactId>
+				<version>${spring-cloud-tsf-consul.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-consul-dependencies</artifactId>
+				<version>${spring-cloud-tsf-consul.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ecwid.consul</groupId>
+				<artifactId>consul-api</artifactId>
+				<version>${consul-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.tencent.tsf</groupId>
+				<artifactId>spring-cloud-tsf-sleuth</artifactId>
+				<version>${spring-cloud-tsf-sleuth.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.tencent.tsf</groupId>
+				<artifactId>spring-cloud-tsf-auth</artifactId>
+				<version>${spring-cloud-tsf-auth.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.5.8.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
